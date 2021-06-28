@@ -15,12 +15,21 @@ RSpec.describe Scorecard do
       expect(scorecard).to respond_to(:score)
     end
 
-    context 'in a normal game' do
-      it 'returns 0 for a gutter game' do
+    context 'in a gutter game' do
+      it 'returns 0 ' do
         10.times{ scorecard.roll(0) }
         expect(scorecard.score).to eq(0)
       end
     end
+
+    context 'in a normal game' do
+      it 'returns the score' do
+        10.times{ scorecard.roll(2) }
+        expect(scorecard.score).to eq(20)
+      end
+    end
+
+
 
   end
 
