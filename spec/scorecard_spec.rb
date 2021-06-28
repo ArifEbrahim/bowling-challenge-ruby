@@ -15,19 +15,25 @@ RSpec.describe Scorecard do
       expect(scorecard).to respond_to(:score)
     end
 
-    context 'in a gutter game' do
-      it 'returns 0 ' do
-        10.times{ scorecard.roll(0) }
-        expect(scorecard.score).to eq(0)
-      end
+    it 'returns 0 when its a gutter game' do
+      10.times{ scorecard.roll(0) }
+      expect(scorecard.score).to eq(0)
     end
 
-    context 'in a normal game' do
-      it 'returns the score' do
-        10.times{ scorecard.roll(2) }
-        expect(scorecard.score).to eq(20)
-      end
+    it 'when its a normal game' do
+      10.times{ scorecard.roll(2) }
+      expect(scorecard.score).to eq(20)
     end
+
+    # it 'when there is a spare' do
+    #   scorecard.roll(5)
+    #   scorecard.roll(5)
+    #   scorecard.roll(2)
+    #   7.times{ scorecard.roll(0) }
+    #   expect(scorecard.score).to eq(14)
+    # end
+
+
 
 
 

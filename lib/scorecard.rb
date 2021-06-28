@@ -1,13 +1,15 @@
 class Scorecard
 
-  attr_reader :score
-
   def initialize
-    @score = 0
+    @total_score = []
   end
 
   def roll(pins)
-    @score += pins
+    @total_score << pins
+  end
+
+  def score
+    @total_score.sum
   end
 
 
