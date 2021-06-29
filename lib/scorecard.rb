@@ -14,13 +14,14 @@ class Scorecard
   end
 
   def score
+    p @rolls
     total = 0
     i = 0
     while i<20 do
       if strike?(@rolls[i])
-        total += bonus(@rolls[i], @rolls[i+2], @rolls[i+3])
+        total += strike_bonus(i)
       elsif spare?(@rolls[i], @rolls[i+1])
-        total += bonus(@rolls[i],@rolls[i+1], @rolls[i+2])
+        total += spare_bonus(@rolls[i],@rolls[i+1], @rolls[i+2])
       else
         total += normal_score(@rolls[i], @rolls[i+1])
       end
@@ -35,11 +36,21 @@ class Scorecard
     roll == 10
   end
 
+  def strike_bonus(i)
+    if @rolls[i] == 10 && @rolls[i + 2] == 10 && @rolls[i + 4] == 10
+      return 30
+    elsif @rolls[i] == 10 && @rolls[i + 2] == 10
+      return @rolls[i] + @rolls[i + 2] + @rolls[i + 4]
+    else
+      @rolls[i] + @rolls[i + 2] + @rolls[i + 3]
+    end
+  end
+
   def spare?(roll_1, roll_2)
     roll_1 + roll_2 == 10
   end
 
-  def bonus(roll_1, roll_2, roll_3)
+  def spare_bonus(roll_1, roll_2, roll_3)
     roll_1 + roll_2 + roll_3
   end
 

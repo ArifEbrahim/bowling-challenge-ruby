@@ -41,9 +41,22 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(18)
     end
 
-    # it 'when there is a strike in frame 10' do
-    #   9.times{ scorecard.roll(0) }
-    # end
+    it 'when there are 2 strikes' do
+      scorecard.roll(10)
+      scorecard.roll(10)
+      scorecard.roll(2)
+      scorecard.roll(2)
+      15.times{ scorecard.roll(0) }
+      expect(scorecard.score).to eq(40)
+    end
+
+    it 'when there are 3 strikes' do
+      scorecard.roll(10)
+      scorecard.roll(10)
+      scorecard.roll(10)
+      14.times{ scorecard.roll(0) }
+      expect(scorecard.score).to eq(60)
+    end
 
 
   end
