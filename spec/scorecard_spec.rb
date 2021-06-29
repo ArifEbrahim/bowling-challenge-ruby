@@ -33,7 +33,13 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(14)
     end
 
-
+    it 'when there is a strike' do
+      scorecard.roll(10)
+      scorecard.roll(2)
+      scorecard.roll(2)
+      7.times{ scorecard.roll(0) }
+      expect(scorecard.score).to eq(18)
+    end
 
 
 
