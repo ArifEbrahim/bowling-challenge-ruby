@@ -25,13 +25,13 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(20)
     end
 
-    # it 'when there is a spare' do
-    #   scorecard.roll(5)
-    #   scorecard.roll(5)
-    #   scorecard.roll(2)
-    #   7.times{ scorecard.roll(0) }
-    #   expect(scorecard.score).to eq(14)
-    # end
+    it 'when there is a spare' do
+      scorecard.roll(5)
+      scorecard.roll(5)
+      scorecard.roll(2)
+      7.times{ scorecard.roll(0) }
+      expect(scorecard.score).to eq(14)
+    end
 
 
 
