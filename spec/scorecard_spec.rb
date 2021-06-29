@@ -16,20 +16,20 @@ RSpec.describe Scorecard do
     end
 
     it 'returns 0 when its a gutter game' do
-      10.times{ scorecard.roll(0) }
+      20.times{ scorecard.roll(0) }
       expect(scorecard.score).to eq(0)
     end
 
     it 'when its a normal game' do
-      10.times{ scorecard.roll(2) }
-      expect(scorecard.score).to eq(20)
+      20.times{ scorecard.roll(2) }
+      expect(scorecard.score).to eq(40)
     end
 
     it 'when there is a spare' do
       scorecard.roll(5)
       scorecard.roll(5)
       scorecard.roll(2)
-      7.times{ scorecard.roll(0) }
+      17.times{ scorecard.roll(0) }
       expect(scorecard.score).to eq(14)
     end
 
@@ -37,10 +37,13 @@ RSpec.describe Scorecard do
       scorecard.roll(10)
       scorecard.roll(2)
       scorecard.roll(2)
-      7.times{ scorecard.roll(0) }
+      16.times{ scorecard.roll(0) }
       expect(scorecard.score).to eq(18)
     end
 
+    # it 'when there is a strike in frame 10' do
+    #   9.times{ scorecard.roll(0) }
+    # end
 
 
   end
