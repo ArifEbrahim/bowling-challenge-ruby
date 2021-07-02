@@ -105,4 +105,28 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(30)
     end
   end
+
+
+  it 'passes the Makers stress test' do
+    scorecard.roll(1)
+    scorecard.roll(4)
+    scorecard.roll(4)
+    scorecard.roll(5)
+    scorecard.roll(6)
+    scorecard.roll(4)
+    scorecard.roll(5)
+    scorecard.roll(5)
+    scorecard.roll(10)
+    scorecard.roll(0)
+    scorecard.roll(1)
+    scorecard.roll(7)
+    scorecard.roll(3)
+    scorecard.roll(6)
+    scorecard.roll(4)
+    scorecard.roll(10)
+    scorecard.roll(2)
+    scorecard.roll(8)
+    scorecard.roll(6)
+    expect(scorecard.score).to eq(133)
+  end
 end
