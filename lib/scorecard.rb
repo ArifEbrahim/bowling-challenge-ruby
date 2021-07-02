@@ -19,6 +19,7 @@ class Scorecard
   end
 
   def score
+    raise ('The game has not ended yet, please enter more rolls') if @rolls.length < 20
     # total score calculation broken down into two parts given complexity 
     calculate_first_nine_frames
     calculate_final_frame
@@ -42,7 +43,7 @@ class Scorecard
   end
 
   def calculate_final_frame
-    # checks if there is a spare or strike in roll 1 then adds the next 3 rolls
+    # checks if there is a spare or strike in roll 1 then adds the next 2 rolls
     if (@rolls[-2] + @rolls[-3]) == 10 || @rolls[-3] == 10
       @total += @rolls[-1] + @rolls[-2] + @rolls[-3] 
     else

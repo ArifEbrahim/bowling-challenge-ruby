@@ -15,8 +15,12 @@ RSpec.describe Scorecard do
 
   describe '#score' do
 
-  it 'can calculate the score for a finished game' do
+  it 'has a score method' do
     expect(scorecard).to respond_to(:score)
+  end
+
+  it 'raises an error if score calculated before end of game' do
+    expect{ scorecard.score }.to raise_error('The game has not ended yet, please enter more rolls')
   end
 
   context 'when there is no special scoring' do
@@ -24,7 +28,7 @@ RSpec.describe Scorecard do
       20.times{ scorecard.roll(0) }
       expect(scorecard.score).to eq(0)
     end
-  end
+
 
     it 'returns the score for a normal game' do
       20.times{ scorecard.roll(2) }
@@ -32,8 +36,8 @@ RSpec.describe Scorecard do
     end
   end
 
-  context 'when there is a spare' do
-    it 'returns the correct score' do
+  context 'returns the correct score' do
+    it 'when there is a spare' do
       scorecard.roll(5)
       scorecard.roll(5)
       scorecard.roll(2)
@@ -42,8 +46,8 @@ RSpec.describe Scorecard do
     end
   end
 
-  context 'when there is a strike' do
-    it 'when there is 1 strike' do
+  context 'returns the correct score when' do
+    it 'there is 1 strike' do
       scorecard.roll(10)
       scorecard.roll(2)
       scorecard.roll(2)
@@ -51,7 +55,7 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(18)
     end
 
-    it 'when there are 2 strikes' do
+    it 'there are 2 strikes' do
       scorecard.roll(10)
       scorecard.roll(10)
       scorecard.roll(2)
@@ -60,7 +64,7 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(40)
     end
 
-    it 'when there are 3 strikes' do
+    it 'there are 3 strikes' do
       scorecard.roll(10)
       scorecard.roll(10)
       scorecard.roll(10)
@@ -69,7 +73,7 @@ RSpec.describe Scorecard do
     end
   end
 
-  context 'in the last frame' do
+  context 'returns the corerct score for frame 10' do
     it 'with no special scoring' do
       18.times{ scorecard.roll(0) }
       scorecard.roll(2)
@@ -132,4 +136,5 @@ RSpec.describe Scorecard do
     scorecard.roll(6)
     expect(scorecard.score).to eq(133)
   end
+end
 end
