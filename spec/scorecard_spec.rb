@@ -64,4 +64,13 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(60)
     end
   end
+
+  context 'in the last frame' do
+    it 'with no special scoring' do
+      18.times{ scorecard.roll(0) }
+      scorecard.roll(2)
+      scorecard.roll(2)
+      expect(scorecard.score).to eq(4)
+    end
+  end
 end

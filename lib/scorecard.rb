@@ -16,7 +16,7 @@ class Scorecard
   def score
     total = 0
     i = 0
-    while i<20 do
+    while i<18 do
       if strike?(i)
         total += strike_bonus(i)
       elsif spare?(@rolls[i], @rolls[i+1])
@@ -26,6 +26,9 @@ class Scorecard
       end
       i += 2
     end
+
+    total += @rolls[-1] + @rolls[-2]
+
     return total
   end
 
