@@ -5,7 +5,7 @@ class Scorecard
   end
 
   def roll(pins)
-    if pins == 10
+    if pins == 10 && @rolls.length < 18
       @rolls << pins
       @rolls.push(0)
     else
@@ -27,7 +27,7 @@ class Scorecard
       i += 2
     end
 
-    if (@rolls[-2] + @rolls[-3]) == 10
+    if (@rolls[-2] + @rolls[-3]) == 10 || @rolls[-3] == 10
       total += @rolls[-1] + @rolls[-2] + @rolls[-3] 
     else
       total += @rolls[-1] + @rolls[-2]

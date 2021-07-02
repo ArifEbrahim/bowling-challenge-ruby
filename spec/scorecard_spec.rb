@@ -80,5 +80,13 @@ RSpec.describe Scorecard do
       scorecard.roll(2)
       expect(scorecard.score).to eq(12)
     end
+
+    it 'with 1 strike' do
+      18.times{ scorecard.roll(0) }
+      scorecard.roll(10)
+      scorecard.roll(5)
+      scorecard.roll(2)
+      expect(scorecard.score).to eq(17)
+    end
   end
 end
