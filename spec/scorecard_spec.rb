@@ -7,6 +7,10 @@ RSpec.describe Scorecard do
     it 'allows players to make rolls' do
       expect(scorecard).to respond_to(:roll).with(1).argument 
     end
+
+    it 'displays an error if more than 10 pins knocked down' do
+      expect{ scorecard.roll(12) }.to raise_error('More than 10 pins detected, please check your roll')
+    end
   end
 
   describe '#score' do
@@ -105,7 +109,6 @@ RSpec.describe Scorecard do
       expect(scorecard.score).to eq(30)
     end
   end
-
 
   it 'passes the Makers stress test' do
     scorecard.roll(1)
