@@ -27,7 +27,11 @@ class Scorecard
       i += 2
     end
 
-    total += @rolls[-1] + @rolls[-2]
+    if (@rolls[-2] + @rolls[-3]) == 10
+      total += @rolls[-1] + @rolls[-2] + @rolls[-3] 
+    else
+      total += @rolls[-1] + @rolls[-2]
+    end
 
     return total
   end

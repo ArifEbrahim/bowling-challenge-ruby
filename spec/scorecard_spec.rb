@@ -72,5 +72,13 @@ RSpec.describe Scorecard do
       scorecard.roll(2)
       expect(scorecard.score).to eq(4)
     end
+
+    it 'with a spare' do
+      18.times{ scorecard.roll(0) }
+      scorecard.roll(5)
+      scorecard.roll(5)
+      scorecard.roll(2)
+      expect(scorecard.score).to eq(12)
+    end
   end
 end
