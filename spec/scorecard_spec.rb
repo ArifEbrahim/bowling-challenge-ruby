@@ -96,5 +96,13 @@ RSpec.describe Scorecard do
       scorecard.roll(2)
       expect(scorecard.score).to eq(22)
     end
+
+    it 'with 3 strikes' do
+      18.times{ scorecard.roll(0) }
+      scorecard.roll(10)
+      scorecard.roll(10)
+      scorecard.roll(10)
+      expect(scorecard.score).to eq(30)
+    end
   end
 end
