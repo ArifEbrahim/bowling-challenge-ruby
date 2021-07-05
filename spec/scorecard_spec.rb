@@ -73,7 +73,7 @@ RSpec.describe Scorecard do
     end
   end
 
-  context 'returns the corerct score for frame 10' do
+  context 'returns the correct score for frame 10' do
     it 'with no special scoring' do
       18.times{ scorecard.roll(0) }
       scorecard.roll(2)

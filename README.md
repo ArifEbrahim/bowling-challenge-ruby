@@ -94,9 +94,12 @@ rspec
 ```
 
 A summary of the tests is as follows:
-![tests](./images/tests.png)
+![tests](./images/all_tests.png)
 
 ## Improvements
 
 Time permitting I would look to make the following changes:
  - Seperate the game logic from score calculation into two seperate classes
+ - Add further error checking logic for the following:
+  - no more than 10 pins rolled per frame
+  - no more than 10 frames per game
